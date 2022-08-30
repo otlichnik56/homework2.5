@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public class EmployeeService implements EmployeeServiceImp {
-    List<Employee> employers = new ArrayList<>(List.of(
+    private  final List<Employee> employers = new ArrayList<>(List.of(
             new Employee("Иванов", "Иван"),
             new Employee("Иванов1", "Иван1"),
             new Employee("Иванов2", "Иван2"),
@@ -40,6 +40,7 @@ public class EmployeeService implements EmployeeServiceImp {
         for (Employee employee: employers) {
             if (employee.equals(employee1)) {
                 employers.remove(employee1);
+                break;
             }
         }
         throw new EmployeeNotFoundException("Сотрудник не найден");
