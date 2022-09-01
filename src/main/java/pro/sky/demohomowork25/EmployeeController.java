@@ -1,7 +1,6 @@
 package pro.sky.demohomowork25;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +11,6 @@ public class EmployeeController {
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
-    }
-
-    @RequestMapping(path = "/employee")
-    public String getPerson(@RequestParam("number") Integer number) {
-        final String person;
-        person = employeeService.getEmployee(number);
-        return person;
     }
 
     @GetMapping (path = "/employee/add")
