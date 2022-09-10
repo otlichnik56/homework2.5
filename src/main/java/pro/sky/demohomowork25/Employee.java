@@ -1,5 +1,7 @@
 package pro.sky.demohomowork25;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Employee {
     private String firstName;
     private String lastName;
@@ -30,11 +32,8 @@ public class Employee {
     }
 
     public boolean equals(Employee employee) {
-        if (employee.getFirstName().equals(this.firstName) && employee.getLastName().equals(this.lastName)) {
-            return true;
-        } else {
-            return false;
-        }
+        return StringUtils.equals(employee.getFirstName(), this.firstName) &&
+                StringUtils.equals(getLastName(), this.lastName);
     }
 
     public int hashCode() {

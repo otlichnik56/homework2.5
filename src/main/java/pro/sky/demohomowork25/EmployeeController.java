@@ -1,5 +1,6 @@
 package pro.sky.demohomowork25;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class EmployeeController {
     @GetMapping (path = "/employee/add")
     public String addPerson(@RequestParam("firstName") String firstName,
                             @RequestParam("lastName") String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+        Employee employee = new Employee(StringUtils.capitalize(firstName), StringUtils.capitalize(lastName));
         employeeService.addEmployee(employee);
         return "Сотрудник успешно добавлен";
     }

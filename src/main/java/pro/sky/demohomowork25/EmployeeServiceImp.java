@@ -1,5 +1,5 @@
 package pro.sky.demohomowork25;
-
+// сервис
 public interface EmployeeServiceImp {
 
     void addEmployee(Employee employee1);
