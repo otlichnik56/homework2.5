@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 // если массив переполнен
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class EmployeeStorageIsFullException extends RuntimeException {
-    public EmployeeStorageIsFullException(String messege) {
-        super(messege);
+    public EmployeeStorageIsFullException(String message) {
+        super(message);
     }
 
 }

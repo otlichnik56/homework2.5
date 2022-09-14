@@ -25,6 +25,11 @@ public class EmployeeService implements EmployeeServiceImp {
     ));
 
     @Override
+    public Map<String, Employee> getEmployers(){
+        return employers;
+    }
+
+    @Override
     public void addEmployee(Employee employee1) {
         for (Employee employee: employers.values()) {
             if (employee1.equals(employee)){
@@ -49,29 +54,6 @@ public class EmployeeService implements EmployeeServiceImp {
             return "найден - " + employee1;
         }
         throw new EmployeeNotFoundException("Сотрудник не найден");
-    }
-
-    @Override
-    public Map<String, Employee> getAllEmployee() {
-        return employers;
-    }
-
-    @Override
-    public List<Employee> getAllEmployeeOfDepartment(int departmentId) {
-        return employers.values().stream()
-                .filter(e -> e.getDepId() == departmentId)
-                .collect(Collectors.toList());
-    }
-    @Override
-    public Employee maxSalaryOfDepartment(int departmentId) {
-        List<Employee> results = getAllEmployeeOfDepartment(departmentId);
-        return results.stream().max(Employee::compare).get();
-    }
-
-    @Override
-    public Employee minSalaryOfDepartment(int departmentId) {
-        List<Employee> results = getAllEmployeeOfDepartment(departmentId);
-        return results.stream().min(Employee::compare).get();
     }
 
 }
