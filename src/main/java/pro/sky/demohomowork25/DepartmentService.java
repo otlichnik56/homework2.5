@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// сервис 2
+
 public class DepartmentService extends EmployeeService implements DepartmentServiceImp {
 
     @Override
