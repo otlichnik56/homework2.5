@@ -36,6 +36,7 @@
 		</dependency>
 
 		<dependency>
+<<<<<<< HEAD
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
 			<version>5.8.2</version>
@@ -43,6 +44,8 @@
 		</dependency>
 
 		<dependency>
+=======
+>>>>>>> origin/homework2.13
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<version>4.1.0</version>
