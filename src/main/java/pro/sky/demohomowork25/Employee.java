@@ -1,6 +1,5 @@
 package pro.sky.demohomowork25;
 
-// класс объектов
 
 public class Employee {
     private String firstName;
