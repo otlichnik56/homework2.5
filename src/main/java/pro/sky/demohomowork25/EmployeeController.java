@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
-
+//контроллер
 
 @RestController
 public class EmployeeController {
@@ -46,8 +46,8 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/departments/al")
-    public Map<String, Employee> allEmployee() {
-        return employeeService.getAllEmployee();
+    public Map<Integer, Employee> allEmployee() {
+        return employeeService.getEmployers();
     }
 
     @GetMapping(path = "/departments/all")
@@ -64,6 +64,5 @@ public class EmployeeController {
     public Employee minSalaryOfDepartment(@RequestParam("departmentId") int departmentId) {
         return employeeService.minSalaryOfDepartment(departmentId);
     }
-
 
 }

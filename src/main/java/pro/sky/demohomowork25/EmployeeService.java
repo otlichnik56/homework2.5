@@ -4,25 +4,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+// сервис1
 
 @Service
 public class EmployeeService implements EmployeeServiceImp {
-    private  final Map<String, Employee> employers = new HashMap<>(Map.of(
-            "123",
-            new Employee("Иванов", "Иван", 50000, 3),
-            "456",
-            new Employee("Иванов1", "Иван1", 500200, 3),
-            "789",
-            new Employee("Иванов2", "Иван2", 501000, 1),
-            "147",
-            new Employee("Иванов3", "Иван3", 507000, 2),
-            "258",
-            new Employee("Иванов4", "Иван4", 550000, 2),
-            "369",
-            new Employee("Иванов5", "Иван5", 530000, 3),
-            "159",
-            new Employee("Иванов6", "Иван6", 503000, 3)
-    ));
+    private static int countId = 0;
+    private  final Map<Integer, Employee> employers = new HashMap<>(Map.of());
+
+    @Override
+    public Map<Integer, Employee> getEmployers(){
+        return employers;
+    }
 
     @Override
     public void addEmployee(Employee employee1) {
@@ -31,8 +23,8 @@ public class EmployeeService implements EmployeeServiceImp {
                 throw new EmployeeAlreadyAddedException("Сотрудник с таким именем и фамилей уже существует");
             }
         }
-        Random rand = new Random();
-        employers.put(rand.toString(), employee1);
+        countId ++;
+        employers.put(countId, employee1);
     }
 
     @Override
@@ -52,13 +44,8 @@ public class EmployeeService implements EmployeeServiceImp {
     }
 
     @Override
-    public Map<String, Employee> getAllEmployee() {
-        return employers;
-    }
-
-    @Override
     public List<Employee> getAllEmployeeOfDepartment(int departmentId) {
-        return employers.values().stream()
+        return getEmployers().values().stream()
                 .filter(e -> e.getDepId() == departmentId)
                 .collect(Collectors.toList());
     }

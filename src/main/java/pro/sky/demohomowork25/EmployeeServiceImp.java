@@ -5,17 +5,18 @@ import java.util.Map;
 
 public interface EmployeeServiceImp {
 
+    Map<Integer, Employee> getEmployers();
+
     void addEmployee(Employee employee1);
 
     void removeEmployee(Employee employee1);
 
     String findEmployee(Employee employee1);
 
-    Map<String, Employee> getAllEmployee();
-
     List<Employee> getAllEmployeeOfDepartment(int departmentId);
 
     Employee maxSalaryOfDepartment(int departmentId);
 
     Employee minSalaryOfDepartment(int departmentId);
+
 }
