@@ -11,7 +11,7 @@ public interface EmployeeServiceImp {
 
     String findEmployee(Employee employee1);
 
-    Map<String, Employee> getAllEmployee();
+    Map<Integer, Employee> getAllEmployee();
 
     List<Employee> getAllEmployeeOfDepartment(int departmentId);
 

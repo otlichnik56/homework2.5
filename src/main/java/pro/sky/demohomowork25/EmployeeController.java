@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/departments/al")
-    public Map<String, Employee> allEmployee() {
+    public Map<Integer, Employee> allEmployee() {
         return employeeService.getAllEmployee();
     }
 
