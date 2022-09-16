@@ -1,63 +1,21 @@
 package pro.sky.demohomowork25;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Map;
 
-import java.util.*;
-import java.util.stream.Collectors;
+public interface EmployeeService {
 
-@Service
-public class EmployeeService implements EmployeeServiceImp {
-    private int countId = 0;
-    private  final Map<Integer, Employee> employers = new HashMap<>(Map.of());
+    void addEmployee(Employee employee1);
 
-    @Override
-    public void addEmployee(Employee employee1) {
-        for (Employee employee: employers.values()) {
-            if (employee1.equals(employee)){
-                throw new EmployeeAlreadyAddedException("Сотрудник с таким именем и фамилей уже существует");
-            }
-        }
-        countId ++;
-        employers.put(countId, employee1);
-    }
+    void removeEmployee(Employee employee1);
 
-    @Override
-    public void removeEmployee(Employee employee1) {
-        if (employers.containsValue(employee1)) {
-            employers.remove(employee1);
-        }
-        throw new EmployeeNotFoundException("Сотрудник не найден");
-    }
+    String findEmployee(Employee employee1);
 
-    @Override
-    public String findEmployee(Employee employee1) {
-        if (employers.containsValue(employee1)) {
-            return "найден - " + employee1;
-        }
-        throw new EmployeeNotFoundException("Сотрудник не найден");
-    }
+    Map<Integer, Employee> getAllEmployee();
 
-    @Override
-    public Map<Integer, Employee> getAllEmployee() {
-        return employers;
-    }
+    List<Employee> getAllEmployeeOfDepartment(int departmentId);
 
-    @Override
-    public List<Employee> getAllEmployeeOfDepartment(int departmentId) {
-        return employers.values().stream()
-                .filter(e -> e.getDepId() == departmentId)
-                .collect(Collectors.toList());
-    }
-    @Override
-    public Employee maxSalaryOfDepartment(int departmentId) {
-        List<Employee> results = getAllEmployeeOfDepartment(departmentId);
-        return results.stream().max(Employee::compare).get();
-    }
+    Employee maxSalaryOfDepartment(int departmentId);
 
-    @Override
-    public Employee minSalaryOfDepartment(int departmentId) {
-        List<Employee> results = getAllEmployeeOfDepartment(departmentId);
-        return results.stream().min(Employee::compare).get();
-    }
-
+    Employee minSalaryOfDepartment(int departmentId);
 }

@@ -2,15 +2,16 @@ package pro.sky.demohomowork25;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
-
-class EmployeeServiceTest {
+@ExtendWith(MockitoExtension.class)
+public class TestEmployeeService {
 
     private Employee people1;
     private Employee people2;
@@ -19,7 +20,7 @@ class EmployeeServiceTest {
     private Employee people5;
     private Employee people6;
     private Employee people7;
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
     Map<Integer, Employee> actual;
 
     @BeforeEach
@@ -33,7 +34,7 @@ class EmployeeServiceTest {
         people6 = new Employee("Иванов5", "Иван5", 530000, 3);
         people7 = new Employee("Иванов6", "Иван6", 503000, 3);
 
-        employeeService = new EmployeeService();
+        employeeService = new EmployeeServiceImpl();
 
         employeeService.addEmployee(people1);
         employeeService.addEmployee(people2);
@@ -69,7 +70,7 @@ class EmployeeServiceTest {
     @Test
     public void removeEmployee(){
         employeeService.addEmployee(people7);
-        employeeService.removeEmployee(people7);
+        employeeService.removeEmployee(people5);
         assertEquals(actual, employeeService.getAllEmployee());
         assertNotNull(employeeService.getAllEmployee());
     }

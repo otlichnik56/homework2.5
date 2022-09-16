@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class EmployeeServiceMockitoTest {
+public class TestEmployeeServiceMockito {
 
     private Employee people1;
     private Employee people2;
@@ -41,7 +40,7 @@ class EmployeeServiceMockitoTest {
         people6 = new Employee("Иванов5", "Иван5", 530000, 3);
         people7 = new Employee("Иванов6", "Иван6", 503000, 3);
 
-        employeeService = new EmployeeService();
+        employeeService = new EmployeeServiceImpl();
 
         employeeService.addEmployee(people1);
         employeeService.addEmployee(people2);
