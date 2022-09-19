@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TestEmployeeServiceMockito {
+public class DepartamentServiceTest {
 
     private Employee people1;
     private Employee people2;
@@ -23,11 +23,11 @@ public class TestEmployeeServiceMockito {
     private Employee people5;
     private Employee people6;
     private Employee people7;
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeServiceImpl;
     Map<Integer, Employee> actual;
 
     @Mock
-    private EmployeeService rMock;
+    private DepartamentServiceImpl rMock;
 
     @BeforeEach
     public void setUp() {
@@ -39,16 +39,6 @@ public class TestEmployeeServiceMockito {
         people5 = new Employee("Иванов4", "Иван4", 550000, 2);
         people6 = new Employee("Иванов5", "Иван5", 530000, 3);
         people7 = new Employee("Иванов6", "Иван6", 503000, 3);
-
-        employeeService = new EmployeeServiceImpl();
-
-        employeeService.addEmployee(people1);
-        employeeService.addEmployee(people2);
-        employeeService.addEmployee(people3);
-        employeeService.addEmployee(people4);
-        employeeService.addEmployee(people5);
-        employeeService.addEmployee(people6);
-        employeeService.addEmployee(people7);
 
         actual = new HashMap<>(Map.of());
         actual.put(1, people1);
@@ -76,21 +66,11 @@ public class TestEmployeeServiceMockito {
     public void getAllEmployeeOfDepartment() {
         when(rMock.getAllEmployeeOfDepartment(2))
                 .thenReturn((List<Employee>) new HashMap<>(Map.of(4, people4, 5, people5)));
-
-
-        assertEquals("найден - " + people7, employeeService.findEmployee(people7));
-
-        verify(rMock, times(1)).addEmployee(people7);
-        verify(rMock, times(1)).findEmployee(people7);
-        verify(rMock, times(1)).removeEmployee(people7);
+        assertEquals("найден - " + people7, employeeServiceImpl.findEmployee(people7));
     }
 
     @Test
     public void metodsCall() {
-        verify(rMock, times(1)).getAllEmployee();
-        verify(rMock, times(1)).addEmployee(people7);
-        verify(rMock, times(1)).findEmployee(people7);
-        verify(rMock, times(1)).removeEmployee(people7);
         verify(rMock, times(1)).getAllEmployeeOfDepartment(2);
         verify(rMock, times(1)).minSalaryOfDepartment(2);
         verify(rMock, times(1)).maxSalaryOfDepartment(2);

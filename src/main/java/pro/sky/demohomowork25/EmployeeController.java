@@ -11,9 +11,11 @@ import java.util.Map;
 @RestController
 public class EmployeeController {
     private final EmployeeService employeeService;
+    private final DepartamentService departamentService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService, DepartamentService departamentService) {
         this.employeeService = employeeService;
+        this.departamentService = departamentService;
     }
 
     @GetMapping (path = "/employee/add")
@@ -52,17 +54,17 @@ public class EmployeeController {
 
     @GetMapping(path = "/departments/all")
     public List<Employee> allEmployeeOfDepartment(@RequestParam("departmentId") int departmentId) {
-        return employeeService.getAllEmployeeOfDepartment(departmentId);
+        return departamentService.getAllEmployeeOfDepartment(departmentId);
     }
 
     @GetMapping(path = "/departments/max-salary")
     public Employee maxSalaryOfDepartment(@RequestParam("departmentId") int departmentId) {
-        return employeeService.maxSalaryOfDepartment(departmentId);
+        return departamentService.maxSalaryOfDepartment(departmentId);
     }
 
     @GetMapping(path = "/departments/min-salary")
     public Employee minSalaryOfDepartment(@RequestParam("departmentId") int departmentId) {
-        return employeeService.minSalaryOfDepartment(departmentId);
+        return departamentService.minSalaryOfDepartment(departmentId);
     }
 
 

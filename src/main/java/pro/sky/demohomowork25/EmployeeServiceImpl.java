@@ -3,7 +3,6 @@ package pro.sky.demohomowork25;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -40,24 +39,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Map<Integer, Employee> getAllEmployee() {
         return employers;
-    }
-
-    @Override
-    public List<Employee> getAllEmployeeOfDepartment(int departmentId) {
-        return employers.values().stream()
-                .filter(e -> e.getDepId() == departmentId)
-                .collect(Collectors.toList());
-    }
-    @Override
-    public Employee maxSalaryOfDepartment(int departmentId) {
-        List<Employee> results = getAllEmployeeOfDepartment(departmentId);
-        return results.stream().max(Employee::compare).get();
-    }
-
-    @Override
-    public Employee minSalaryOfDepartment(int departmentId) {
-        List<Employee> results = getAllEmployeeOfDepartment(departmentId);
-        return results.stream().min(Employee::compare).get();
     }
 
 }

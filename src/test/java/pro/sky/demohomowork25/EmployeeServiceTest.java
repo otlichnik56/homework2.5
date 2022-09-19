@@ -11,7 +11,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TestEmployeeService {
+public class EmployeeServiceTest {
 
     private Employee people1;
     private Employee people2;
